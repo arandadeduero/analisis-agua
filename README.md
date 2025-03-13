@@ -9,12 +9,12 @@ Este programa tiene como objetivo principal el servir como herramienta de ayuda 
 Lo primero que te pedirá el programa a la hora de ejecutarlo es que selecciones el archivo CSV que contiene las lecturas que se deseen analizar, no se podrá avanzar en la ejecución del programa sin cumplir este paso. Si se cierra el diálogo de selección el programa terminará su ejecución de inmediato. En caso de seleccionar un CSV parcialmente erróneo el programa nos avisará de la posible pérdida de datos al no haber podido interpretar algunos registros. Si la interpretación de las lecturas es correcta o solo parcialmente errónea el programá procederá a mostrarnos este menú:
 
 <p align="center">
-    ------Analizador de registros de Aguas (Contadores)------
-     1 - Consulta y estadísticas parametrizadas
-     2 - Consultar por consumo total en rango de años
-     3 - No implementado
-     H - Ayuda
-     0 - Salir
+    ------Analizador de registros de Aguas (Contadores)------ <br/>
+     1 - Consulta y estadísticas parametrizadas <br/>
+     2 - Consultar por consumo total en rango de años <br/>
+     3 - No implementado <br/>
+     H - Ayuda <br/>
+     0 - Salir <br/>
     Opción elegida:
 </p>
 

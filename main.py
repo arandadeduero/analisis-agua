@@ -101,7 +101,7 @@ def consulta_parametrizada(lista):
             print()
             print("El valor insertado no cumple con los requisitos solicitados, vuelva a intentarlo")
 
- # Este método está encargado de mostrar información de ayuda destinada a resolver las dudas que pueda tener el usuario respecto a la ejecucuión del programa
+# Este método está encargado de mostrar información de ayuda destinada a resolver las dudas que pueda tener el usuario respecto a la ejecucuión del programa
 def help():
     print("----Documentación de Ayuda----")
     print(" --Ayuda de Menú--")
@@ -109,13 +109,20 @@ def help():
     print(" --Ayuda de Consulta Parametrizada--")
     print("Esta opción permite la visualización de información relacionada con los registros que coincidan con una serie de parámetros establecidos por el usuario. Explicaremos estos parámetros uno a uno a continuación:")
     print("- Trimestre: Permite al usuario elegir entre el primer, segundo, tercer y cuarto trimestre o periodo. Si un registro tiene su fecha de lectura dentro del trimestre seleccionado por el usuario, este se incluirá en la consulta. Se pueden elegir varios trimestres concatenándolos de cualquier forma, por ejemplo '1,2,3,4', '1-2-3-4', '1 2 3 4' y '1234' serían ejemplos completamente válidos para elegir todo el año.")
-    print("- Años: Indican los límites del rango de años que se van a tener en cuenta en la consulta. Si un registro tiene su fecha de lectura dentro del rango de años elegido, este registro formará parte de esta. Cualquiera de los años solo tiene como única restricción ser un número, y, en caso del año final, ser mayor o igual al de comienzo.")
-    print("- Consumo: Indican los límites del rango de gasto contado que se va a tener en cuenta en la consulta. Si un registro tiene su consumo dentro del rango de consumo elegido, este registro formará parte de esta. Cualquiera de los valores de consumo tienen como única restricción ser un número, y, en caso del valor de consumo final, ser mayor o igual que el de comienzo.")
-    print("Al ejecutar este proceso con éxito se nos devolverán y mostrarán todos los registros que cumplan con los requisitos de nuestra consulta encabezados por el 'número' o 'código' de abonado. Además de esto se nos mostrarán una serie de estadísticas informativas y porcentajes basados en la consulta realizada.")
+    print("- Años: Indican los límites del rango de años que se van a tener en cuenta en la consulta. Si un registro tiene su fecha de lectura dentro del rango de años elegido, este registro formará parte de la consulta. Cualquiera de los años solo tiene como única restricción ser un número, y, en caso del año final, ser mayor o igual al de comienzo.")
+    print("- Consumo: Indican los límites del rango de gasto contado que se va a tener en cuenta en la consulta. Si un registro tiene su consumo dentro del rango de consumo elegido, este registro formará parte de la consulta. Cualquiera de los valores de consumo tienen como única restricción ser un número, y, en caso del valor de consumo final, ser mayor o igual que el de comienzo.")
+    print("Al ejecutar este proceso con éxito se nos devolverán y mostrarán todos los registros que cumplan con los requisitos de nuestra consulta encabezados por el 'número' o 'código' de abonado. Además de esto se nos mostrarán una serie de estadísticas informativas y porcentajes basados en la consulta realizada. Si deseamos ver una gráafica basada en la consulta simplemente debemos de escibir 'G' antes de darle a 'Enter'.")
+    print(" --Ayuda de Consulta por Consumo Total--")
+    print("Esta opción permite ver que contadores han tenido su consumo total dentro del rango de consumo especificado al terminar el rango de años especificado. Los parametros a introducir son estos:")
+    print("- Años: Indican los límites del rango de años que se van a tener en cuenta en la consulta. Si un contador tiene una lectura al comienzo y al final del rango de años elegido, estas se usaran para sacar la diferencia de los valores de lectura. Cualquiera de los años solo tiene como única restricción ser un número, y, en caso del año final, ser mayor o igual al de comienzo.")
+    print("- Consumo: Indican los límites del rango de gasto contado que se va a tener en cuenta en la consulta. Si un contador tiene su consumo total del rango de años dentro del rango de consumo elegido, este registro formará parte de la consulta. Cualquiera de los valores de consumo tienen como única restricción ser un número, y, en caso del valor de consumo final, ser mayor o igual que el de comienzo.")
+    print("Al ejecutar este proceso con éxito se nos devolverán y mostrarán todos los códigos de los contadores que cumplan con los requisitos de nuestra consulta. Además de esto se nos mostrará el porcentaje de contadores correctamente registrados que cumplen la consulta realizada y tanto el número de contadores mal registrados en el rango como a que números de abonado están vinculados.")
     print()
     print("Para salir del menu de ayuda pulse la tecla 'Enter'",end = "")
     input()
 
+# Este método se encarga de la inserción de datos necesaria para que se ejecute el método consulta_consumo de la clase controlador.py de forma adecuada. Además muestra al usuario
+# los resultados de la ejecución del método mencionado.
 def consulta_consumo_total_rango_años (lista):
     print("Elige los límites del rango de años de los registros que se van a mostrar (En el rango se incluyen tanto el año comienzo como el año final) (El año comienzo debe ser menor o igual al año final)")
     print("-Comienzo del rango (ejem: 2016):", end=" ")

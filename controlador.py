@@ -28,8 +28,8 @@ def leer_archivo():
                     cabecera=False
         return lista, skipped
 
-# Este método se encarga de filtrar la lista de instancias de registro.py que se le pasa como parámetro usando los demás parámetros incluidos en este. Además de la lista filtrada, este
-# método devuelve la cantidad de registros que cumplen cada condición individual elegida.
+# Este método se encarga de filtrar la lista de instancias de registro.py que se le pasa como parámetro usando los demás parámetros incluidos en este para devolver solo aquellos que concuerden
+# o estén contenidos dentro de los diferentes valores y rangos establecidos en estos. Además de la lista filtrada, este método devuelve la cantidad de registros que cumplen cada condición individual elegida.
 def consulta_parametrizada(peri, anno_com, anno_fin, cons_min, cons_max, lista):
     cont1=0
     cont2=0
@@ -45,6 +45,10 @@ def consulta_parametrizada(peri, anno_com, anno_fin, cons_min, cons_max, lista):
                     lista_val.append(reg)
     return lista_val, cont1, cont2, cont3
 
+
+# Este método se encarga de filtrar la lista de instancias de registro.py que se le pasa como parámetro usando los demás parámetros incluidos en este para devolver que contadores han consumido 
+# una cantidad total dentro del rango de consumo durante todo el rango de años. Además de la lista filtrada, este método devuelve el contador de incidencias junto a la lista de los códigos 
+# de abonado a los que están vinculadas y el número de contadores correctamente identificados que existieron durante la extensión completa del rango de años.
 def consulta_consumo(anno_com, anno_fin, cons_min, cons_max, lista):
     lista_ini = []
     lista_fin = []

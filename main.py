@@ -2,7 +2,6 @@
 #Código desarrollado por: Javier Montes de Blas
 
 #Librerías
-import subprocess
 from matplotlib import pyplot as plt
 import controlador
 
@@ -10,11 +9,16 @@ import controlador
 def main():
     print("Por favor seleccione el archivo csv que contiene las lecturas: ")
     lista, alerta=controlador.leer_archivo()
-    if alerta:
-        print("Algunos registros erróneos han sido ignorados, los datos útiles no deberían haber sido afectados.")
+    if len(lista)>0:
+        if alerta:
+            print("Algunos registros erróneos han sido ignorados, los datos útiles no deberían haber sido afectados.")
+        else:
+            print("Carga de datos completada con éxito.")
+        menu(lista)
     else:
-        print("Carga de datos completada con éxito.")
-    menu(lista)
+        print("No se ha podido interpretar ningún registro")
+        print("Para terminar la ejecución del programa pulse la tecla 'Enter'",end = "")
+        controlador.salir()
     
 # Este método contiene el bucle que permite la interacción con el menú y cada una de sus funciones asociadas, ejecutándos en bucle hasta que el usuario decida terminar usando la sentencia 0
 def menu(lista):
@@ -33,8 +37,7 @@ def menu(lista):
                 help()
             case "0":
                 print("Fin de la ejecución")
-                exit()
-                subprocess.call("cmd.exe /C exit", shell=True)
+                controlador.salir()
             case _:
                 print("Opción deseada no recogida dentro de las implementadas, cuando el menú vuelva a mostrarse pulse 'H' seguido de la tecla 'Enter' para acceder al texto de ayuda")
         print()

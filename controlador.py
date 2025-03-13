@@ -1,3 +1,4 @@
+import subprocess
 from tkinter import filedialog
 import csv
 import registro
@@ -7,25 +8,25 @@ import registro
 # de los registros, seguramente si esto pasa se debe al uso de saltos de línea en los comentarios de los técnicos a la hora de hacer la revisión.
 def leer_archivo():
     ruta = None
-
-    while(not ruta):
-        ruta = filedialog.askopenfilename()
-
-    with open(ruta, 'r', encoding='utf-8') as fichero:
-        lista=[]
-        lineas = csv.reader(fichero)
-        cabecera = True
-        skipped=False
-        for linea in lineas:
-            if not cabecera:
-                try:
-                    reg=registro.Registro(linea[0], int(linea[1]), int(linea[2]), linea[3], int(linea[5]), int(linea[6]), int(linea[7]), linea[12])
-                    lista.append(reg)
-                except(IndexError,ValueError):
-                    skipped=True
-            else:
-                cabecera=False
-    return lista, skipped
+    ruta = filedialog.askopenfilename()
+    if(not ruta):
+        salir()
+    else:
+        with open(ruta, 'r', encoding='utf-8') as fichero:
+            lista=[]
+            lineas = csv.reader(fichero)
+            cabecera = True
+            skipped=False
+            for linea in lineas:
+                if not cabecera:
+                    try:
+                        reg=registro.Registro(linea[0], int(linea[1]), int(linea[2]), linea[3], int(linea[5]), int(linea[6]), int(linea[7]), linea[12])
+                        lista.append(reg)
+                    except(IndexError,ValueError):
+                        skipped=True
+                else:
+                    cabecera=False
+        return lista, skipped
 
 # Este método se encarga de filtrar la lista de instancias de registro.py que se le pasa como parámetro usando los demás parámetros incluidos en este. Además de la lista filtrada, este
 # método devuelve la cantidad de registros que cumplen cada condición individual elegida.
@@ -69,3 +70,7 @@ def consulta_consumo(anno_com, anno_fin, cons_min, cons_max, lista):
             if not lista_inc.__contains__(reg_fin.cod_abonado):
                 lista_inc.append(reg_fin.cod_abonado)
     return lista_res, cont, lista_inc, cont_inc
+
+def salir():
+    exit()
+    subprocess.call("cmd.exe /C exit", shell=True)

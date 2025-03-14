@@ -3,7 +3,7 @@
 <p align="center"><img src="./icon.ico" alt="ERR"></p>
 
 ## Introducción
-Este programa tiene como objetivo principal el servir como herramienta de ayuda a la hora de analizar volcados de la base de datos de revisiones de contadores en ficheros formato CSV. Este programa está desarrollado por Javier Montes como empleado en prácticas del Departamento de Informática del [Ayuntamiento de Aranda de Duero](https://www.arandadeduero.es/).
+Este programa tiene como objetivo principal el servir como herramienta de ayuda a la hora de analizar volcados de la base de datos de revisiones de contadores en ficheros formato CSV. Este programa está desarrollado por Javier Montes como alumno en prácticas del Departamento de Informática del [Ayuntamiento de Aranda de Duero](https://www.arandadeduero.es/).
 Este programa está adaptado para nuestros registros y campos propios, pero este aspecto debería ser facilmente modificable ajustando el método 'leer_archivo()' de la clase 'controlador.py' para que se ciña a las necesidades y sistema deseados.
 ## Funcionamiento
 Lo primero que te pedirá el programa a la hora de ejecutarlo es que selecciones el archivo CSV que contiene las lecturas que se deseen analizar, no se podrá avanzar en la ejecución del programa sin cumplir este paso. Si se cierra el diálogo de selección el programa terminará su ejecución de inmediato. En caso de seleccionar un CSV parcialmente erróneo el programa nos avisará de la posible pérdida de datos al no haber podido interpretar algunos registros. Si la interpretación de las lecturas es correcta o solo parcialmente errónea el programá procederá a mostrarnos este menú:

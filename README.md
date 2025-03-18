@@ -5,7 +5,20 @@
 ## Introducción
 Este programa tiene como objetivo principal el servir como herramienta de ayuda a la hora de analizar volcados de la base de datos de revisiones de contadores en ficheros formato CSV. Este programa está desarrollado por Javier Montes como alumno en prácticas del Departamento de Informática del [Ayuntamiento de Aranda de Duero](https://www.arandadeduero.es/).
 Este programa está adaptado para nuestros registros y campos propios, pero este aspecto debería ser facilmente modificable ajustando el método 'leer_archivo()' de la clase 'controlador.py' para que se ciña a las necesidades y sistema deseados.
-## Funcionamiento
+## Setup
+Una vez instalado el repositorio, accede a la carpeta que contiene todos los archivos Python (.py) y en esta abre una pantalla de PowerShell pulsando 'Shift'+'Click Derecho' y buscando la opción 'Abrir ventana de PowerShell aquí'. En la ventana de PowerShell abierta ejecuta los siguientes comandos para convertir los diferentes archivos en un solo ejecutable compatible con el sistema operativo de aquel que lo convierta:
+
+<p align="left">
+    python -m venv myenv<br/>
+    .\myenv\Scripts\activate<br/>
+    pip install -r .\requirements.txt<br/>
+    pyinstaller --onefile --icon=icon.ico main.py
+</p>
+
+Una vez completado estos pasos tendremos disponible el archivo ejecutable dentro de una carpeta llamada 'dist', la cual se halla dentro de la carpeta del repositorio. Eres completamente libre de moverlo y renombrarlo siempre y cuando no alteres la extensión del archivo.
+## Ejecución
+Para ejecutar el programa hay dos formas principales, con o sin interfaz. Para ejecutar el programa con interfaz se puede hacer tanto desde la consola de comandos usando su ruta absoluta o relativa, o simplemente seleccionando con doble 'Click Izquierdo' el archivo ejecutable. Para ejecutarlo sin interfaz  es necesario hacerlo desde la consola de comandos usando cualquiera de sus rutas, segida del argumento '-i'. Para una explicación más elavorada revise el apartado 'Sin interfaz', el cual se hallará en algún punto a continuación.
+### Con interfaz
 Lo primero que te pedirá el programa a la hora de ejecutarlo es que selecciones el archivo CSV que contiene las lecturas que se deseen analizar, no se podrá avanzar en la ejecución del programa sin cumplir este paso. Si se cierra el diálogo de selección el programa terminará su ejecución de inmediato. En caso de seleccionar un CSV parcialmente erróneo el programa nos avisará de la posible pérdida de datos al no haber podido interpretar algunos registros. Si la interpretación de las lecturas es correcta o solo parcialmente errónea el programá procederá a mostrarnos este menú:
 
 <p align="left">
@@ -35,4 +48,29 @@ Una vez se nos ha mostrado el menú, para elegir la opción deseada solo debemos
     &nbsp;&nbsp;- Años: Indican los límites del rango de años que se van a tener en cuenta en la consulta. Si un contador tiene una lectura al comienzo y al final del rango de años elegido, estas se usaran para sacar la diferencia de los valores de lectura. Cualquiera de los años solo tiene como única restricción ser un número, y, en caso del año final, ser mayor o igual al de comienzo.<br/>
     &nbsp;&nbsp;- Consumo: Indican los límites del rango de gasto contado que se va a tener en cuenta en la consulta. Si un contador tiene su consumo total del rango de años dentro del rango de consumo elegido, este registro formará parte de la consulta. Cualquiera de los valores de consumo tienen como única restricción ser un número, y, en caso del valor de consumo final, ser mayor o igual que el de comienzo. <br/>
     Al ejecutar este proceso con éxito se nos devolverán y mostrarán todos los códigos de los contadores que cumplan con los requisitos de nuestra consulta. Además de esto se nos mostrará el porcentaje de contadores correctamente registrados que cumplen la consulta realizada y tanto el número de contadores mal registrados en el rango como a que números de abonado están vinculados. <br/>
+</p>
+
+### Sin interfaz
+Si deseas ver los argumentos a tu disposición despúes de la ruta del ejecutable escribe el argumento '-h':
+
+<p align="left">
+    .\main.exe -h
+</p>
+
+Este comando abrirá una descripción corta del programa y de cada argumento, además de un esquema de su uso. De todas formas a continuación habrá una lista de ejemplos de comandos para ejecutar el programa sin interfaz correctamente formados, seguida una explicación corta de cada argumento.
+
+<p align="left">
+    .\main.exe -i -o 1 -p 1 -a 2013 2015 -c 0 40<br/>
+    .\main.exe -i -o 1 -p 2 3 -a 2005 2010 -c 0 0 -g<br/>
+    .\main.exe -i -o 1 -p 1 2 3 4 -a 2000 2012 -c 5 15<br/>
+    .\main.exe -i -o 2 -a 2005 2010 -c 0 0<br/>
+    .\main.exe -i -o 2 -a 2015 2020 -c 10 20<br/><br/>
+    -i -> Si está presente el programa se ejecutará en el modo 'Sin interfaz'. En caso de no estar presente no se leerán el resto de argumentos.
+    -o -> Su uso en caso de una ejecución sin interfaz es obligatorio, y solo puede tener los valores contemplados a continuación:
+    &nbsp;&nbsp;&nbsp;1 -> Ejecuta una consulta parametrizada, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta Parametrizada'.
+    &nbsp;&nbsp;&nbsp;2 -> Ejecuta una consulta por consumo total, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta Parametrizada'.
+    -p -> Los periodos N que se tendrán en cuenta en la consulta, se debe usar este argumento en la consulta 1. Se pueden colocar después del argumento '-p' los periodos deseados separados por espacios.
+    -a -> El rango de años que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el año en el que comienze el rango y el año en el que termine separados por un espacio después del argumento '-a'.
+    -c -> El rango de consumo que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el consumo en el que comienze el rango y el consumo en el que termine separados por un espacio después del argumento '-c'.
+    -g -> Si está presente, al terminar la consulta parametrizada aparecerá una gráfica con información vinculada a esta. Se puede usar este argumento en la consulta 1.
 </p>

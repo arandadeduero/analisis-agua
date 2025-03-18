@@ -9,7 +9,7 @@ import argparse
 #Este método es el primero en ser ejecutado y contiene el flujo de ejecución principal de todo programa
 def main():
     parser = argparse.ArgumentParser(description="Permite el análisis de contadores de agua en base a un archivo csv")
-    parser.add_argument('-i', '--interfaz', action="store_false", help="El programa se ejecutará sin interfaz gráfica, lo que hace que el resto de argumentos se vuelven irrelevantes.")
+    parser.add_argument('-i', '--interfaz', action="store_false", help="El programa se ejecutará sin interfaz gráfica, lo que hace que el resto de argumentos se vuelven relevantes.")
     parser.add_argument('-o', '--opcion', metavar="N", choices=['1','2'], help="Elegirá que tipo de consulta realizar si se ejecuta sin interfaz, consultar dudas en el README.txt.")
     parser.add_argument('-p', '--periodo', nargs='+', metavar="N", help="Los periodos N que se tendrán en cuenta en la consulta, se usan en la consulta 1.")
     parser.add_argument('-a', '--años', metavar="N", nargs=2, type=int, help="El rango de años que se tendrá en cuenta en la consulta, se usa en la consulta 1 y 2.")

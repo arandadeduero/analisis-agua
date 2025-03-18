@@ -34,7 +34,7 @@ Lo primero que te pedirá el programa a la hora de ejecutarlo es que selecciones
 Una vez se nos ha mostrado el menú, para elegir la opción deseada solo debemos escribir a la derecha de donde se halla el texto 'Opción elegida: ' el número o caracter que corresponda a la acción que deseemos realizar y pulsar la tecla 'Enter' o 'Intro'. Para una primera ejecución recomendamos el seleccionar la opción de 'Ayuda' escribiendo el caracter 'H' y pulsando 'Enter', lo que nos llevará a una guía escrita de cada uno de los apartados del programa. También puede leerla a continuación:
 
 <p align="left">
-    <h2>Documentación de Ayuda</h2>
+    <h4>Documentación de Ayuda</h4>
     <b>--Ayuda de Menú--</b><br/>
     Para usar el menú, primero fíjese en los números que se encuentran delante de cada una de las opciones. Se puede acceder a cada una de ellas escribiendo el numero correspondiente en la zona indicada del menú. Si se escribe cualquier sentencia que no esté recogida entre las permitidas, saltará un mensaje informando de esto y ofreciendo ayuda sobre como llegar a esta información.<br/><br/>
     <b>--Ayuda de Consulta Parametrizada--</b><br/>

@@ -68,7 +68,7 @@ Este comando abrirá una descripción corta del programa y de cada argumento, ad
     -i -> Si está presente el programa se ejecutará en el modo 'Sin interfaz'. En caso de no estar presente no se leerán el resto de argumentos.<br/>
     -o -> Su uso en caso de una ejecución sin interfaz es obligatorio, y solo puede tener los valores contemplados a continuación:<br/>
     &nbsp;&nbsp;&nbsp;1 -> Ejecuta una consulta parametrizada, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta Parametrizada'.<br/>
-    &nbsp;&nbsp;&nbsp;2 -> Ejecuta una consulta por consumo total, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta Parametrizada'.<br/>
+    &nbsp;&nbsp;&nbsp;2 -> Ejecuta una consulta por consumo total, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta por Consumo Total'.<br/>
     -p -> Los periodos N que se tendrán en cuenta en la consulta, se debe usar este argumento en la consulta 1. Se pueden colocar después del argumento '-p' los periodos deseados separados por espacios.<br/>
     -a -> El rango de años que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el año en el que comienze el rango y el año en el que termine separados por un espacio después del argumento '-a'.<br/>
     -c -> El rango de consumo que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el consumo en el que comienze el rango y el consumo en el que termine separados por un espacio después del argumento '-c'.<br/>

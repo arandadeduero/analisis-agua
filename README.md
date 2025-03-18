@@ -65,12 +65,12 @@ Este comando abrirá una descripción corta del programa y de cada argumento, ad
     .\main.exe -i -o 1 -p 1 2 3 4 -a 2000 2012 -c 5 15<br/>
     .\main.exe -i -o 2 -a 2005 2010 -c 0 0<br/>
     .\main.exe -i -o 2 -a 2015 2020 -c 10 20<br/><br/>
-    -i -> Si está presente el programa se ejecutará en el modo 'Sin interfaz'. En caso de no estar presente no se leerán el resto de argumentos.
-    -o -> Su uso en caso de una ejecución sin interfaz es obligatorio, y solo puede tener los valores contemplados a continuación:
-    &nbsp;&nbsp;&nbsp;1 -> Ejecuta una consulta parametrizada, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta Parametrizada'.
-    &nbsp;&nbsp;&nbsp;2 -> Ejecuta una consulta por consumo total, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta Parametrizada'.
-    -p -> Los periodos N que se tendrán en cuenta en la consulta, se debe usar este argumento en la consulta 1. Se pueden colocar después del argumento '-p' los periodos deseados separados por espacios.
-    -a -> El rango de años que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el año en el que comienze el rango y el año en el que termine separados por un espacio después del argumento '-a'.
-    -c -> El rango de consumo que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el consumo en el que comienze el rango y el consumo en el que termine separados por un espacio después del argumento '-c'.
+    -i -> Si está presente el programa se ejecutará en el modo 'Sin interfaz'. En caso de no estar presente no se leerán el resto de argumentos.<br/>
+    -o -> Su uso en caso de una ejecución sin interfaz es obligatorio, y solo puede tener los valores contemplados a continuación:<br/>
+    &nbsp;&nbsp;&nbsp;1 -> Ejecuta una consulta parametrizada, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta Parametrizada'.<br/>
+    &nbsp;&nbsp;&nbsp;2 -> Ejecuta una consulta por consumo total, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta Parametrizada'.<br/>
+    -p -> Los periodos N que se tendrán en cuenta en la consulta, se debe usar este argumento en la consulta 1. Se pueden colocar después del argumento '-p' los periodos deseados separados por espacios.<br/>
+    -a -> El rango de años que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el año en el que comienze el rango y el año en el que termine separados por un espacio después del argumento '-a'.<br/>
+    -c -> El rango de consumo que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el consumo en el que comienze el rango y el consumo en el que termine separados por un espacio después del argumento '-c'.<br/>
     -g -> Si está presente, al terminar la consulta parametrizada aparecerá una gráfica con información vinculada a esta. Se puede usar este argumento en la consulta 1.
 </p>

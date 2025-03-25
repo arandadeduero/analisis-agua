@@ -51,7 +51,7 @@ def menu_interface():
     print("Opción elegida:", end=" ")
 
 #Este método muestra en forma de gráfica los parámetros dados
-def graf(lista_val, cont1, cont2, cont3):
+def grafica(lista_val, cont1, cont2, cont3):
     fig, ax = plt.subplots()
     ax.grid()
     ax.grid(which="minor", color="0.5")
@@ -92,7 +92,7 @@ def consulta_parametrizada(lista):
                 print("Para continuar pulse la tecla 'Enter', para ver la gráfica escriba 'G' y pulse 'Enter':",end = " ")
                 graf=input()
                 if(graf.upper()=='G'):
-                    graf(lista_val, cont1, cont2, cont3)
+                    grafica(lista_val, cont1, cont2, cont3)
         except(ValueError):
             print()
             print("El valor insertado no cumple con los requisitos solicitados, vuelva a intentarlo")

@@ -8,7 +8,7 @@ import controlador
 #Este método es el primero en ser ejecutado en caso de haver elegido la opción cin interfaz y contiene el flujo de ejecución principal de todo programa
 def con_interfaz():
     print("Por favor seleccione el archivo csv que contiene las lecturas: ")
-    lista, alerta=controlador.leer_archivo()
+    lista, alerta=controlador.leer_archivo_lecturas()
     if len(lista)>0:
         if alerta:
             print("Algunos registros erróneos han sido ignorados, los datos útiles no deberían haber sido afectados.")
@@ -31,6 +31,8 @@ def menu(lista):
                 consulta_parametrizada(lista)
             case "2":
                 consulta_consumo_total_rango_años(lista)
+            case "3":
+                consulta_contador(lista)
             case "H":
                 help()
             case "0":
@@ -46,12 +48,13 @@ def menu_interface():
     print("------Analizador de registros de Aguas (Contadores)------")
     print(" 1 - Consulta y estadísticas parametrizadas")
     print(" 2 - Consultar por consumo total en rango de años")
+    print(" 3 - Consultar por contador")
     print(" H - Ayuda")
     print(" 0 - Salir")
     print("Opción elegida:", end=" ")
 
 #Este método muestra en forma de gráfica los parámetros dados
-def grafica(lista_val, cont1, cont2, cont3):
+def grafica_cons1(lista_val, cont1, cont2, cont3):
     fig, ax = plt.subplots()
     ax.grid()
     ax.grid(which="minor", color="0.5")
@@ -88,18 +91,17 @@ def consulta_parametrizada(lista):
                 print()
                 for reg in lista_val:
                     print(reg.to_string())
-                mostrar_res_cp(lista_val, cont1, cont2, cont3)
+                mostrar_res_c_par(lista_val, cont1, cont2, cont3)
                 print("Para continuar pulse la tecla 'Enter', para ver la gráfica escriba 'G' y pulse 'Enter':",end = " ")
                 graf=input()
                 if(graf.upper()=='G'):
-                    grafica(lista_val, cont1, cont2, cont3)
+                    grafica_cons1(lista_val, cont1, cont2, cont3)
         except(ValueError):
             print()
             print("El valor insertado no cumple con los requisitos solicitados, vuelva a intentarlo")
 
 # Muestra al usuario los resultados de la ejecución del método consulta_parametrizada().
-
-def mostrar_res_cp(lista_val, cont1, cont2, cont3):
+def mostrar_res_c_par(lista_val, cont1, cont2, cont3):
     print()
     print(f"El porcentaje de registros que cumplen estos requisitos es el {(len(lista_val)/cont1)*100}% de {cont1} registros totales. ({int((len(lista_val)/cont1)*cont1)} registros)")
     print(f"El porcentaje de registros en el rango de años especificado (Los cuales son el {(cont2/cont1)*100}% del total) que cumplen los requisitos es el {(len(lista_val)/cont2)*100}% de {cont2}.")
@@ -128,27 +130,53 @@ def help():
 
 # Este método se encarga de la inserción de datos necesaria para que se ejecute el método consulta_consumo de la clase controlador.py de forma adecuada.
 def consulta_consumo_total_rango_años (lista):
-    print("Elige los límites del rango de años de los registros que se van a mostrar (En el rango se incluyen tanto el año comienzo como el año final) (El año comienzo debe ser menor o igual al año final)")
-    print("-Comienzo del rango (ejem: 2016):", end=" ")
-    anno_com = int(input())
-    print("-Final del rango (ejem: 2018):", end=" ")
-    anno_fin = int(input())  
-    if(anno_fin<anno_com):
-        raise ValueError
-    print("Elige los límites del rango de consumo total en el rango de años de los registros que se van a mostrar (En el rango se incluyen tanto el valor comienzo como el valor final) (El valor comienzo debe ser menor o igual al valor final)")
-    print("-Comienzo del rango (ejem: 0):", end=" ")
-    cons_min = int(input())
-    print("-Final del rango (ejem: 100):", end=" ")
-    cons_max = int(input())
-    if(cons_max<cons_min):
-        raise ValueError
-    lista_res, cont, lista_inc, cont_inc = controlador.consulta_consumo(anno_com, anno_fin, cons_min, cons_max, lista)
-    mostrar_res_cct(lista_res, cont, lista_inc, cont_inc)
-    print("Para continuar pulse la tecla 'Enter'",end = "")
-    input()
+    try:
+        print("Elige los límites del rango de años de los registros que se van a mostrar (En el rango se incluyen tanto el año comienzo como el año final) (El año comienzo debe ser menor o igual al año final)")
+        print("-Comienzo del rango (ejem: 2016):", end=" ")
+        anno_com = int(input())
+        print("-Final del rango (ejem: 2018):", end=" ")
+        anno_fin = int(input())  
+        if(anno_fin<anno_com):
+            raise ValueError
+        print("Elige los límites del rango de consumo total en el rango de años de los registros que se van a mostrar (En el rango se incluyen tanto el valor comienzo como el valor final) (El valor comienzo debe ser menor o igual al valor final)")
+        print("-Comienzo del rango (ejem: 0):", end=" ")
+        cons_min = int(input())
+        print("-Final del rango (ejem: 100):", end=" ")
+        cons_max = int(input())
+        if(cons_max<cons_min):
+            raise ValueError
+        lista_res, cont, lista_inc, cont_inc = controlador.consulta_consumo(anno_com, anno_fin, cons_min, cons_max, lista)
+        mostrar_res_c_cons(lista_res, cont, lista_inc, cont_inc)
+        print("Para continuar pulse la tecla 'Enter'",end = "")
+        input()
+    except(ValueError):
+            print()
+            print("El valor insertado no cumple con los requisitos solicitados, vuelva a intentarlo")
+
+def consulta_contador(lista):
+    try:
+        print("Elige los límites del rango de años de los registros que se van a mostrar (En el rango se incluyen tanto el año comienzo como el año final) (El año comienzo debe ser menor o igual al año final)")
+        print("-Comienzo del rango (ejem: 2016):", end=" ")
+        anno_com = int(input())
+        print("-Final del rango (ejem: 2018):", end=" ")
+        anno_fin = int(input())  
+        if(anno_fin<anno_com):
+            raise ValueError
+        print("Código del contador a analizar:", end=" ")
+        cod = str(input()).upper()
+        lista_res, cons_total = controlador.consulta_contador(anno_com, anno_fin, cod, lista)
+        tipo, diam = controlador.buscar_tipo_diam(lista, cod)
+        mostrar_res_c_cont(lista_res, cons_total, tipo, diam)
+        print("Para continuar pulse la tecla 'Enter', para ver la gráfica escriba 'G' y pulse 'Enter':",end = " ")
+        graf=input()
+        if(graf.upper()=='G'):
+            grafica_cons2(lista_res)
+    except(ValueError):
+            print()
+            print("El valor insertado no cumple con los requisitos solicitados, vuelva a intentarlo")
 
 # Muestra al usuario los resultados de la ejecución del método consulta_consumo_total_rango_años().
-def mostrar_res_cct(lista_res, cont, lista_inc, cont_inc):
+def mostrar_res_c_cons(lista_res, cont, lista_inc, cont_inc):
     print()
     try:
         print("Contadores que cumplen los requisitos:")
@@ -167,3 +195,30 @@ def mostrar_res_cct(lista_res, cont, lista_inc, cont_inc):
         print("ERROR: No hay contadores en el fichero que hayan existido durante la totalidad del rango de años")
         print()
     print()
+
+# Muestra al usuario los resultados de la ejecución del método consulta_parametrizada().
+def mostrar_res_c_cont(lista_res, cons_total, tipo, diam):
+    print()
+    for reg in lista_res:
+        print(reg.to_string())
+    print()
+    print(f"El consumo total de este contador en el rango especificado de tiempo es de {cons_total} m^3, lo cual supone una media de {cons_total/len(lista_res)} m^3 entre lectura y lectura.")
+    print(f"Este contador es de tipo '{tipo}' y tiene un diámetro de {diam}.")
+    print()
+
+def grafica_cons2(lista_res):
+    fig, ax = plt.subplots()
+    lista_valores = []
+    lista_columnas = []
+    for reg in lista_res:
+        lista_valores.append(reg.val_consumo)
+        subStr = reg.fecha_lectura.split("/")
+        lista_columnas.append(str(reg.cod_periodo) + "/" + subStr[2])
+    ax.grid()
+    ax.grid(which="minor", color="0.5")
+    ax.bar(lista_columnas, lista_valores, width=1)
+    ax.set_title("Representación gráfica de la consulta")
+    ax.set_ylabel('Consumo (m^3)')
+    print("Cierre la gráfica para continuar")
+    plt.show()
+    

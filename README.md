@@ -6,6 +6,21 @@
 Este programa tiene como objetivo principal el servir como herramienta de ayuda a la hora de analizar volcados de la base de datos de revisiones de contadores en ficheros formato CSV. Este programa está desarrollado por Javier Montes como alumno en prácticas del Departamento de Informática del [Ayuntamiento de Aranda de Duero](https://www.arandadeduero.es/).
 Este programa está adaptado para nuestros registros y campos propios, pero este aspecto debería ser fácilmente modificable ajustando el método 'leer_archivo()' de la clase 'controlador.py' para que se ciña a las necesidades y sistema deseados.
 ## Setup
+### Requisitos
+Para la preparación del programa solo es necesario tener descargada alguna versión de Python. Además, necesitamos permiso para ejecutar Scripts dentro de nuestra computadora, para comprovar esto ejecutamos el siguienta comando:
+
+<p align="left">
+    Get-ExecutionPolicy
+</p>
+
+Si esta está restringida necesitaremos ejecutar este comando con permisos de administrador:
+
+<p align="left">
+    Set-ExecutionPolicy Unrestricted
+</p>
+
+Una vez completados estos pasos preliminares podemos comenzar a trabajar con la descarga del repositorio.
+### Instrucciones
 Una vez instalado el repositorio, accede a la carpeta que contiene todos los archivos Python (.py) y en esta abre una pantalla de PowerShell pulsando 'Shift'+'Click Derecho' y buscando la opción 'Abrir ventana de PowerShell aquí'. En la ventana de PowerShell abierta ejecuta los siguientes comandos para convertir los diferentes archivos en un solo ejecutable compatible con el sistema operativo de aquel que lo convierta:
 
 <p align="left">
@@ -38,7 +53,7 @@ Una vez se nos ha mostrado el menú, para elegir la opción deseada solo debemos
     <b>--Ayuda de Menú--</b><br/>
     Para usar el menú, primero fíjese en los números que se encuentran delante de cada una de las opciones. Se puede acceder a cada una de ellas escribiendo el numero correspondiente en la zona indicada del menú. Si se escribe cualquier sentencia que no esté recogida entre las permitidas, saltará un mensaje informando de esto y ofreciendo ayuda sobre cómo llegar a esta información.<br/><br/>
     <b>--Ayuda de Consulta Parametrizada--</b><br/>
-  Esta opción permite la visualización de información relacionada con los registros que coincidan con una serie de parámetros establecidos por el usuario. Explicaremos estos parámetros uno a uno a continuación:<br/>
+    Esta opción permite la visualización de información relacionada con los registros que coincidan con una serie de parámetros establecidos por el usuario. Explicaremos estos parámetros uno a uno a continuación:<br/>
     &nbsp;&nbsp;- Trimestre: Permite al usuario elegir entre el primer, segundo, tercer y cuarto trimestre o periodo. Si un registro tiene su fecha de lectura dentro del trimestre seleccionado por el usuario, este se incluirá en la consulta. Se pueden elegir varios trimestres concatenándolos de cualquier forma, por ejemplo '1,2,3,4', '1-2-3-4', '1 2 3 4' y '1234' serían ejemplos completamente válidos para elegir todo el año.<br/>
     &nbsp;&nbsp;- Años: Indican los límites del rango de años que se van a tener en cuenta en la consulta. Si un registro tiene su fecha de lectura dentro del rango de años elegido, este registro formará parte de la consulta Cualquiera de los años solo tiene como única restricción ser un número, y, en caso del año final, ser mayor o igual al de comienzo.<br/>
     &nbsp;&nbsp;- Consumo: Indican los límites del rango de gasto contado que se va a tener en cuenta en la consulta. Si un registro tiene su consumo dentro del rango de consumo elegido, este registro formará parte de la consulta Cualquiera de los valores de consumo tienen como única restricción ser un número, y, en caso del valor de consumo final, ser mayor o igual que el de comienzo.<br/>

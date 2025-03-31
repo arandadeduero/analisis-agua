@@ -48,7 +48,7 @@ def menu_interface():
     print("------Analizador de registros de Aguas (Contadores)------")
     print(" 1 - Consulta y estadísticas parametrizadas")
     print(" 2 - Consultar por consumo total en rango de años")
-    print(" 3 - Consultar por contador")
+    print(" 3 - Consulta de contador")
     print(" H - Ayuda")
     print(" 0 - Salir")
     print("Opción elegida:", end=" ")

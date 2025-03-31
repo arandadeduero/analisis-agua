@@ -12,7 +12,7 @@ def main():
     parser.add_argument('-i', '--interfaz', action="store_false", help="El programa se ejecutará sin interfaz gráfica, lo que hace que el resto de argumentos se vuelven relevantes.")
     parser.add_argument('-o', '--opcion', metavar="N", choices=['1','2','3'], help="Elegirá que tipo de consulta realizar si se ejecuta sin interfaz, consultar dudas en el README.txt.")
     parser.add_argument('-p', '--periodo', nargs='+', metavar="N", help="Los periodos N que se tendrán en cuenta en la consulta, se usan en la consulta 1.")
-    parser.add_argument('-cod', '--codigo', metavar="N", help="El contador del que se realizará la consulta, se usa en la consulta 3")
+    parser.add_argument('-cod', '--codigo', metavar="X", help="El contador del que se realizará la consulta, se usa en la consulta 3")
     parser.add_argument('-a', '--años', metavar="N", nargs=2, type=int, help="El rango de años que se tendrá en cuenta en la consulta, se usa en la consulta 1, 2 y 3.")
     parser.add_argument('-con', '--consumo', metavar="N", nargs=2, type=int, help="El rango de consumo que se tendrá en cuenta en la consulta, se usa en la consulta 1 y 2.")
     parser.add_argument('-g', '--grafica', action="store_true", help="El programa mostrará una gráfica con los resultados, se usa en la consulta 1 y 3.")

@@ -7,7 +7,7 @@ Este programa tiene como objetivo principal el servir como herramienta de ayuda 
 Este programa está adaptado para nuestros registros y campos propios, pero este aspecto debería ser fácilmente modificable ajustando el método 'leer_archivo()' de la clase 'controlador.py' para que se ciña a las necesidades y sistema deseados.
 ## Setup
 ### Requisitos
-Para la preparación del programa solo es necesario tener descargada alguna versión de Python. Además, necesitamos permiso para ejecutar Scripts dentro de nuestra computadora, para comprovar esto ejecutamos el siguienta comando:
+Para la preparación del programa solo es necesario tener descargada alguna versión de Python. Además, necesitamos permiso para ejecutar Scripts dentro de nuestra computadora, para comprobar esto ejecutamos el siguienta comando:
 
 <p align="left">
     Get-ExecutionPolicy
@@ -40,7 +40,7 @@ Lo primero que te pedirá el programa a la hora de ejecutarlo es que selecciones
     <b>------Analizador de registros de Aguas (Contadores)------</b> <br/>
      1 - Consulta y estadísticas parametrizadas <br/>
      2 - Consultar por consumo total en rango de años <br/>
-     3 - No implementado <br/>
+     3 - Consulta de contador <br/>
      H - Ayuda <br/>
      0 - Salir <br/>
     Opción elegida:
@@ -55,14 +55,19 @@ Una vez se nos ha mostrado el menú, para elegir la opción deseada solo debemos
     <b>--Ayuda de Consulta Parametrizada--</b><br/>
     Esta opción permite la visualización de información relacionada con los registros que coincidan con una serie de parámetros establecidos por el usuario. Explicaremos estos parámetros uno a uno a continuación:<br/>
     &nbsp;&nbsp;- Trimestre: Permite al usuario elegir entre el primer, segundo, tercer y cuarto trimestre o periodo. Si un registro tiene su fecha de lectura dentro del trimestre seleccionado por el usuario, este se incluirá en la consulta. Se pueden elegir varios trimestres concatenándolos de cualquier forma, por ejemplo '1,2,3,4', '1-2-3-4', '1 2 3 4' y '1234' serían ejemplos completamente válidos para elegir todo el año.<br/>
-    &nbsp;&nbsp;- Años: Indican los límites del rango de años que se van a tener en cuenta en la consulta. Si un registro tiene su fecha de lectura dentro del rango de años elegido, este registro formará parte de la consulta Cualquiera de los años solo tiene como única restricción ser un número, y, en caso del año final, ser mayor o igual al de comienzo.<br/>
+    &nbsp;&nbsp;- Años: Indican los límites del rango de años que se van a tener en cuenta en la consulta. Si un registro tiene su fecha de lectura dentro del rango de años elegido, este registro formará parte de la consulta. Cualquiera de los años solo tiene como única restricción ser un número, y, en caso del año final, ser mayor o igual al de comienzo.<br/>
     &nbsp;&nbsp;- Consumo: Indican los límites del rango de gasto contado que se va a tener en cuenta en la consulta. Si un registro tiene su consumo dentro del rango de consumo elegido, este registro formará parte de la consulta Cualquiera de los valores de consumo tienen como única restricción ser un número, y, en caso del valor de consumo final, ser mayor o igual que el de comienzo.<br/>
     Al ejecutar este proceso con éxito se nos devolverán y mostrarán todos los registros que cumplan con los requisitos de nuestra consulta encabezados por el 'número' o 'código' de abonado. Además de esto se nos mostrarán una serie de estadísticas informativas y porcentajes basados en la consulta realizada. Si deseamos ver una gráfica basada en la consulta simplemente debemos de escribir 'G' antes de darle a 'Enter'.<br/><br/>
     <b>--Ayuda de Consulta por Consumo Total--</b><br/>
     Esta opción permite ver que contadores han tenido su consumo total dentro del rango de consumo especificado al terminar el rango de años especificado. Los parámetros a introducir son estos: <br/>
     &nbsp;&nbsp;- Años: Indican los límites del rango de años que se van a tener en cuenta en la consulta. Si un contador tiene una lectura al comienzo y al final del rango de años elegido, estas se usarán para sacar la diferencia de los valores de lectura. Cualquiera de los años solo tiene como única restricción ser un número, y, en caso del año final, ser mayor o igual al de comienzo.<br/>
     &nbsp;&nbsp;- Consumo: Indican los límites del rango de gasto contado que se va a tener en cuenta en la consulta. Si un contador tiene su consumo total del rango de años dentro del rango de consumo elegido, este registro formará parte de la consulta. Cualquiera de los valores de consumo tiene como única restricción ser un número, y, en caso del valor de consumo final, ser mayor o igual que el de comienzo. <br/>
-    Al ejecutar este proceso con éxito se nos devolverán y mostrarán todos los códigos de los contadores que cumplan con los requisitos de nuestra consulta. Además de esto se nos mostrará el porcentaje de contadores correctamente registrados que cumplen la consulta realizada y tanto el número de contadores mal registrados en el rango como a que números de abonado están vinculados. <br/>
+    Al ejecutar este proceso con éxito se nos devolverán y mostrarán todos los códigos de los contadores que cumplan con los requisitos de nuestra consulta. Además de esto se nos mostrará el porcentaje de contadores correctamente registrados que cumplen la consulta realizada y tanto el número de contadores mal registrados en el rango como a que números de abonado están vinculados. <br/><br/>
+    <b>--Ayuda de Consulta por Consumo Total--</b><br/>
+    Esta opción permite ver todas las lecturas registradas sobre un contador específico en un rango de años especificado. Los parámetros a introducir son estos: <br/>
+    &nbsp;&nbsp;- Código: Indica que contador es el que se va a tener en cuenta en la consulta. Si un registro tiene como código de contador aquel introducido, este formará parte de la consulta.<br/>
+    &nbsp;&nbsp;- Años: Indican los límites del rango de años que se van a tener en cuenta en la consulta. Si un registro tiene su fecha de lectura dentro del rango de años elegido, este registro formará parte de la consulta. Cualquiera de los años solo tiene como única restricción ser un número, y, en caso del año final, ser mayor o igual al de comienzo.<br/>
+    Al ejecutar este proceso con éxito se nos devolverán y mostrarán todos los registros del contador que estén dentro del rango de años.Además de esto se nos mostrarán una serie de estadísticas informativas y porcentajes basados en la consulta realizada. Si deseamos ver una gráfica basada en la consulta simplemente debemos de escribir 'G' antes de darle a 'Enter'. <br/>
 </p>
 
 ### Sin interfaz
@@ -79,13 +84,16 @@ Este comando abrirá una descripción corta del programa y de cada argumento, ad
     .\main.exe -i -o 1 -p 2 3 -a 2005 2010 -c 0 0 -g<br/>
     .\main.exe -i -o 1 -p 1 2 3 4 -a 2000 2012 -c 5 15<br/>
     .\main.exe -i -o 2 -a 2005 2010 -c 0 0<br/>
-    .\main.exe -i -o 2 -a 2015 2020 -c 10 20<br/><br/>
+    .\main.exe -i -o 2 -a 2015 2020 -c 10 20<br/>
+    .\main.exe -i -o 3 -cod 96195493 -a 2004 2022 <br/>
+    .\main.exe -i -o 3 -cod C970209 -a 2013 2018 -g<br/><br/>
     -i -> Si está presente el programa se ejecutará en el modo 'Sin interfaz'. En caso de no estar presente no se leerán el resto de argumentos.<br/>
     -o -> Su uso en caso de una ejecución sin interfaz es obligatorio, y solo puede tener los valores contemplados a continuación:<br/>
     &nbsp;&nbsp;&nbsp;1 -> Ejecuta una consulta parametrizada, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta Parametrizada'.<br/>
     &nbsp;&nbsp;&nbsp;2 -> Ejecuta una consulta por consumo total, para ver su funcionamiento suba al apartado de 'Documentación de Ayuda' subapartado 'Ayuda de Consulta por Consumo Total'.<br/>
     -p -> Los periodos N que se tendrán en cuenta en la consulta, se debe usar este argumento en la consulta 1. Se pueden colocar después del argumento '-p' los periodos deseados separados por espacios.<br/>
-    -a -> El rango de años que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el año en el que comienze el rango y el año en el que termine separados por un espacio después del argumento '-a'.<br/>
+    -cod -> El código de contador X que se tendrá en cuenta en la consulta, se debe usar este argumento en la consulta 3.<br/>
+    -a -> El rango de años que se tendrá en cuenta en la consulta, se debe usar en la consulta 1, 2 y 3. Se deben colocar el año en el que comienze el rango y el año en el que termine separados por un espacio después del argumento '-a'.<br/>
     -c -> El rango de consumo que se tendrá en cuenta en la consulta, se debe usar en la consulta 1 y 2. Se deben colocar el consumo en el que comienze el rango y el consumo en el que termine separados por un espacio después del argumento '-c'.<br/>
     -g -> Si está presente, al terminar la consulta parametrizada aparecerá una gráfica con información vinculada a esta. Se puede usar este argumento en la consulta 1.
 </p>

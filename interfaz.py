@@ -216,7 +216,7 @@ def grafica_cons2(lista_res):
         lista_columnas.append(str(reg.cod_periodo) + "/" + subStr[2])
     ax.grid()
     ax.grid(which="minor", color="0.5")
-    ax.bar(lista_columnas, lista_valores, width=1)
+    ax.bar(lista_columnas, lista_valores, width=0.8)
     ax.set_title("Representación gráfica de la consulta")
     ax.set_ylabel('Consumo (m^3)')
     print("Cierre la gráfica para continuar")

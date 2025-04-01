@@ -23,7 +23,7 @@ def main():
         lista_l, b = controlador.leer_archivo_lecturas()
         if(arguments.opcion=='1'):
             if(not arguments.años or not arguments.consumo):
-                print("El valor años (-a) y el valor consumo (-c) son obligatorios en la consulta 1 y 2.")
+                print("El valor años (-a) y el valor consumo (-c) son obligatorios en la consulta 1.")
                 print()
                 controlador.salir()
             if(arguments.periodo):
@@ -36,14 +36,14 @@ def main():
                 print()
         elif(arguments.opcion=='2'):
             if(not arguments.años or not arguments.consumo):
-                print("El valor años (-a) y el valor consumo (-c) son obligatorios en la consulta 1 y 2.")
+                print("El valor años (-a) y el valor consumo (-c) son obligatorios en la consulta 2.")
                 print()
                 controlador.salir()
             lista_res, cont, lista_inc, cont_inc = controlador.consulta_consumo(arguments.años[0], arguments.años[1], arguments.consumo[0], arguments.consumo[1], lista_l)
             interfaz.mostrar_res_c_cons(lista_res, cont, lista_inc, cont_inc)
         elif(arguments.opcion=='3'):
-            if(not arguments.años):
-                print("El valor años (-a) es obligatorio en la consulta 3.")
+            if(not arguments.años or not arguments.codigo):
+                print("El valor años (-a) y el valor código son obligatorios en la consulta 3.")
                 print()
                 controlador.salir()
             else:
